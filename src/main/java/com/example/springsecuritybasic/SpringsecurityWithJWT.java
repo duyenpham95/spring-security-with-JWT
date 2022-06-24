@@ -6,10 +6,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 
 @EnableWebSecurity(debug = true)
 @SpringBootApplication
-public class SpringsecuritybasicApplication {
+public class SpringsecurityWithJWT {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringsecuritybasicApplication.class, args);
+		SpringApplication.run(SpringsecurityWithJWT.class, args);
 	}
 
 }

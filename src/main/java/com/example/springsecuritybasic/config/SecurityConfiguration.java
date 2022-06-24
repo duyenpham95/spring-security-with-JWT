@@ -2,6 +2,7 @@ package com.example.springsecuritybasic.config;
 
 import com.example.springsecuritybasic.filter.AuthoritiesLoggingAfterFilter;
 import com.example.springsecuritybasic.filter.AuthoritiesLoggingAtFilter;
+import com.example.springsecuritybasic.filter.JWTTokenGeneratorFilter;
 import com.example.springsecuritybasic.filter.RequestValidatorBeforeFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,11 +54,14 @@ public class SecurityConfiguration {
         .hasRole("USER")
         .antMatchers("/admin-role")
         .hasRole("ADMIN")
+        .antMatchers("/login")
+        .hasAuthority("READ")
         .and()
         .csrf()
         .disable()
         .addFilterBefore(new RequestValidatorBeforeFilter(), BasicAuthenticationFilter.class)
         .addFilterAfter(new AuthoritiesLoggingAfterFilter(), BasicAuthenticationFilter.class)
+        .addFilterAfter(new JWTTokenGeneratorFilter(), BasicAuthenticationFilter.class)
         .addFilterAt(new AuthoritiesLoggingAtFilter(), BasicAuthenticationFilter.class)
         .httpBasic(withDefaults());
     return http.build();

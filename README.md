@@ -19,3 +19,11 @@ This project is my notes on JWT
 - By default spring security will auto generate JESSIONID and stored in HTTPSESSION. Using JWT, we can indicate that we will take care JESSIONID by ourself
     `http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)`: tell SpringSecurity not to generate any token
 - Expose header for any consumers consume the apis
+- Import jwt dependency
+- Create JWTTokenGeneratorFilter to generate token when login
+  - Generate JWT Token which comprised of 3 part:
+  + header: meta data related to token
+  + payload: user-related information
+  + signature: hash secret used to verify token later on
+  - Then set token to AUTHORIZATION header
+- Add JWTTokenGeneratorFilter into security config

@@ -35,4 +35,9 @@ public class WelcomeController {
   public String allowAdminRole() {
     return "You have admin role";
   }
+
+  @GetMapping("/login")
+  public String login() {
+    return "You are logged in";
+  }
 }
