@@ -32,6 +32,8 @@ public class SecurityConfiguration {
         .antMatchers("/admin-role")
         .hasRole("ADMIN")
         .and()
+        .csrf()
+        .disable()
         .addFilterBefore(new RequestValidatorBeforeFilter(), BasicAuthenticationFilter.class)
         .addFilterAfter(new AuthoritiesLoggingAfterFilter(), BasicAuthenticationFilter.class)
         .addFilterAt(new AuthoritiesLoggingAtFilter(), BasicAuthenticationFilter.class)

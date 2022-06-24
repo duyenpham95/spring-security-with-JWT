@@ -13,3 +13,6 @@ This project is my notes on JWT
 - using antMatcher("/secured").authenticated(): tested with no auth in postman return 401
 - using .antMatchers("/read-write").hasAuthority("WRITE"): require "WRITE" auth to pass or else return 403
 - using .antMatchers("/read-only").hasAuthority("READ"): require "READ" auth to pass or else return 403
+
+### Config to use JWT
+- first disable csrf because it will be redundant
