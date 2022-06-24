@@ -15,4 +15,7 @@ This project is my notes on JWT
 - using .antMatchers("/read-only").hasAuthority("READ"): require "READ" auth to pass or else return 403
 
 ### Config to use JWT
-- first disable csrf because it will be redundant
+- First disable csrf because it will be redundant
+- By default spring security will auto generate JESSIONID and stored in HTTPSESSION. Using JWT, we can indicate that we will take care JESSIONID by ourself
+    `http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)`: tell SpringSecurity not to generate any token
+- Expose header for any consumers consume the apis
