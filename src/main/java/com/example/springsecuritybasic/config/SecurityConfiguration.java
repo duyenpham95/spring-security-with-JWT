@@ -1,9 +1,6 @@
 package com.example.springsecuritybasic.config;
 
-import com.example.springsecuritybasic.filter.AuthoritiesLoggingAfterFilter;
-import com.example.springsecuritybasic.filter.AuthoritiesLoggingAtFilter;
-import com.example.springsecuritybasic.filter.JWTTokenGeneratorFilter;
-import com.example.springsecuritybasic.filter.RequestValidatorBeforeFilter;
+import com.example.springsecuritybasic.filter.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -61,6 +58,7 @@ public class SecurityConfiguration {
         .disable()
         .addFilterBefore(new RequestValidatorBeforeFilter(), BasicAuthenticationFilter.class)
         .addFilterAfter(new AuthoritiesLoggingAfterFilter(), BasicAuthenticationFilter.class)
+        .addFilterBefore(new JWTTokenValidatorFilter(), BasicAuthenticationFilter.class)
         .addFilterAfter(new JWTTokenGeneratorFilter(), BasicAuthenticationFilter.class)
         .addFilterAt(new AuthoritiesLoggingAtFilter(), BasicAuthenticationFilter.class)
         .httpBasic(withDefaults());

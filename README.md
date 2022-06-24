@@ -27,3 +27,9 @@ This project is my notes on JWT
   + signature: hash secret used to verify token later on
   - Then set token to AUTHORIZATION header
 - Add JWTTokenGeneratorFilter into security config
+- Add JWTTokenValidatorFilter to validate token for request access after logging
+- Note that we need implement FE also to set token into header and send to BE for validation
+### TAKEAWAY
+- Token helps not to share the credentials for every request
+- Dont mistake token could replace AUTHENTICATION
+- we generate token after AUTHENTICATED succesfully and use the user info in authentication to generate TOKEN, then pass token in further accesses
